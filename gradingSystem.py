@@ -1,8 +1,8 @@
 def show_history() -> None:
     print("\n=== Brief History of Python ===")
-    print("\n - Created in the year 1991")
-    print("\n - Python 3 released in the year 2008")
-    print("\n*** Program that Computes the Average Score of Students ***\n")
+    print("- Created in the year 1991")
+    print("- Python 3 released in the year 2008")
+    print("\n*** Program that Computes the Average Score and Grade of Students ***\n")
 
 
 def get_names_score() -> tuple[list[str], list[float]]:
@@ -47,16 +47,31 @@ def compute_average(scores: list[float]) -> float:
     return sum(scores) / len(scores)
 
 
+def grade_student(score: float) -> str:
+    if score >= 70:
+        return 'A'
+    elif score >= 60:
+        return 'B'
+    elif score >= 50:
+        return 'C'
+    elif score >= 40:
+        return 'D'
+    else:
+        return 'F'
+
+
 def show_results(names: list[str], scores: list[float]) -> None:
-    print("\n=== Student Scores ===")
+    print("\n=== Student Results ===")
     for name, score in zip(names, scores):
-        print(f"{name}: {score:.2f}")
+        grade = grade_student(score)
+        print(f"{name}: Score = {score:.2f}, Grade = {grade}")
 
     avg = compute_average(scores)
     print(f"\nAverage Score: {avg:.2f}")
+    print(f"Average Grade: {grade_student(avg)}")
 
 
-# Main Program
+# === Main Program ===
 if __name__ == "__main__":
     show_history()
     names, scores = get_names_score()
